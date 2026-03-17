@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>THE VISION - Digital Marketing Agency</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="/_sdk/element_sdk.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'syne': ['Syne', 'sans-serif'],
+            'inter': ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html, body { height: 100%; margin: 0; }
+    
+    .gradient-text {
+      background: linear-gradient(135deg, var(--primary-action) 0%, var(--secondary-action) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .nav-link {
+      position: relative;
+    }
+    
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--primary-action);
+      transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after, .nav-link.active::after {
+      width: 100%;
+    }
+    
+    .service-card {
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .service-card:hover {
+      transform: translateY(-12px);
+    }
+    
+    .floating {
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(2deg); }
+    }
+    
+    .slide-up {
+      animation: slideUp 0.8s ease-out forwards;
+    }
+    
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .pulse-glow {
+      animation: pulseGlow 2s ease-in-out infinite;
+    }
+    
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(255, 107, 53, 0.3); }
+      50% { box-shadow: 0 0 40px rgba(255, 107, 53, 0.6); }
+    }
+    
+    .marquee {
+      animation: marquee 20s linear infinite;
+    }
+    
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    
+    .page { display: none; }
+    .page.active { display: block; }
+    
+    .blob {
+      border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+      animation: morph 8s ease-in-out infinite;
+    }
+    
+    @keyframes morph {
+      0%, 100% { border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; }
+      50% { border-radius: 58% 42% 30% 70% / 55% 55% 45% 45%; }
+    }
+    
+    .stat-number {
+      font-variant-numeric: tabular-nums;
+    }
+    
+    .timeline-dot {
+      transition: all 0.3s ease;
+    }
+    
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.5);
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full overflow-auto" style="background-color: var(--background); color: var(--text);">
+  <div id="app-wrapper" class="w-full min-h-full" style="--background: #f0f7ff; --surface: #ffffff; --text: #0d3b66; --primary-action: #0066cc; --secondary-action: #0099ff;"><!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-xl" style="background: rgba(255, 255, 255, 0.98); border-bottom: 1px solid rgba(0, 102, 204, 0.15);">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+     <div class="flex items-center justify-between"><!-- Logo --> <a href="#" class="flex items-center gap-3 group" onclick="navigateTo('home'); return false;">
+       <div class="relative">
+         <img src="C:\Users\Yatri\Desktop\TVD\logo.png" 
+         alt="THE VISION Logo" 
+         class="h-12 w-auto object-contain transition-transform group-hover:scale-105" 
+         loading="lazy">
+       </div>
+       <div><span class="font-syne font-bold text-xl tracking-tight" style="color: var(--text);">THE VISION</span> <span class="block text-xs font-inter tracking-widest opacity-60">DIGITAL AGENCY</span>
+       </div></a> <!-- Desktop Navigation -->
+      <div class="hidden md:flex items-center gap-10"><a href="#" onclick="navigateTo('home'); return false;" class="nav-link font-inter text-sm tracking-wide active" data-page="home" style="color: var(--text);">Home</a> <a href="#" onclick="navigateTo('services'); return false;" class="nav-link font-inter text-sm tracking-wide" data-page="services" style="color: var(--text);">Services</a> <a href="#" onclick="navigateTo('about'); return false;" class="nav-link font-inter text-sm tracking-wide" data-page="about" style="color: var(--text);">About Us</a> <a href="#" onclick="navigateTo('contact'); return false;" class="nav-link font-inter text-sm tracking-wide" data-page="contact" style="color: var(--text);">Contact</a><!-- CTA Button --> <a href="#" onclick="navigateTo('contact'); return false;" class="hidden md:flex items-center gap-2 px-6 py-3 rounded-full font-inter font-medium text-sm transition-all hover:scale-105 pulse-glow" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action)); color: white;"> <span>Start Project</span>
+        <svg width="16" height="16" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
+        </svg></a> <!-- Mobile Menu Button --> <button id="mobileMenuBtn" class="md:hidden p-2" onclick="toggleMobileMenu()">
+        <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18" />
+        </svg></button>
+      </div><!-- Mobile Menu -->
+      <div id="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-black/10 pt-4">
+       <div class="flex flex-col gap-4"><a href="#" onclick="navigateTo('home'); toggleMobileMenu(); return false;" class="font-inter text-sm" style="color: var(--text);">Home</a> <a href="#" onclick="navigateTo('services'); toggleMobileMenu(); return false;" class="font-inter text-sm" style="color: var(--text);">Services</a> <a href="#" onclick="navigateTo('about'); toggleMobileMenu(); return false;" class="font-inter text-sm" style="color: var(--text);">About Us</a> <a href="#" onclick="navigateTo('contact'); toggleMobileMenu(); return false;" class="font-inter text-sm" style="color: var(--text);">Contact</a>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav><!-- HOME PAGE -->
+   <div id="page-home" class="page active"><!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center pt-20 overflow-hidden"><!-- Background Elements -->
+     <div class="absolute inset-0 overflow-hidden">
+      <div class="absolute top-20 right-10 w-96 h-96 blob opacity-10" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action));"></div>
+      <div class="absolute bottom-20 left-10 w-64 h-64 blob opacity-5" style="background: var(--secondary-action); animation-delay: -4s;"></div>
+      <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full opacity-3" style="background: radial-gradient(circle, var(--primary-action) 0%, transparent 70%);"></div>
+     </div>
+     <div class="relative max-w-7xl mx-auto px-6 py-20">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+       <div class="slide-up">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8" style="background: rgba(0,102,204,0.12); border: 1px solid rgba(0,102,204,0.3);"><span class="w-2 h-2 rounded-full animate-pulse" style="background: var(--primary-action);"></span> <span class="font-inter text-sm" style="color: var(--primary-action);">Now Accepting New Clients</span>
+        </div>
+        <h1 id="hero-headline" class="font-syne font-bold text-5xl md:text-7xl leading-tight mb-6">We Turn <span class="gradient-text">Digital Dreams</span> Into Reality</h1>
+        <p id="hero-subtext" class="font-inter text-lg md:text-xl opacity-70 mb-10 max-w-lg leading-relaxed">A fresh perspective on digital marketing. We craft compelling stories, stunning visuals, and strategies that make your brand unforgettable.</p>
+        <div class="flex flex-wrap gap-4"><a href="#" onclick="navigateTo('services'); return false;" class="group flex items-center gap-3 px-8 py-4 rounded-full font-inter font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, #0066cc, #0099ff); color: white;"> <span>Explore Services</span>
+          <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="transition-transform group-hover:translate-x-1"><path d="M5 12h14M12 5l7 7-7 7" />
+          </svg></a> <a href="#" onclick="navigateTo('about'); return false;" class="flex items-center gap-3 px-8 py-4 rounded-full font-inter font-semibold transition-all hover:scale-105" style="background: var(--surface); border: 2px solid #0066cc; color: #0066cc;"> <span>Our Story</span> </a>
+        </div>
+       </div>
+       <div class="relative slide-up" style="animation-delay: 0.2s;"><!-- Floating Cards -->
+        <div class="relative">
+         <div class="floating absolute -top-10 -left-10 p-6 rounded-2xl backdrop-blur-xl" style="background: linear-gradient(135deg, rgba(0,102,204,0.08), rgba(0,153,255,0.08)); border: 1px solid rgba(0,102,204,0.2);">
+          <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#0066cc" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18" /> <path d="M17 6h6v6" />
+          </svg>
+          <p class="font-syne font-bold text-2xl mt-2" style="color: #0066cc;">250%</p>
+          <p class="font-inter text-xs opacity-60" style="color: var(--text);">Avg. Growth Rate</p>
+         </div>
+         <div class="floating absolute -bottom-10 -right-10 p-6 rounded-2xl backdrop-blur-xl" style="background: linear-gradient(135deg, rgba(0,153,255,0.08), rgba(0,102,204,0.08)); border: 1px solid rgba(0,153,255,0.2); animation-delay: -3s;">
+          <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="#0099ff" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /> <circle cx="9" cy="7" r="4" /> <path d="M23 21v-2a4 4 0 0 0-3-3.87" /> <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+          </svg>
+          <p class="font-syne font-bold text-2xl mt-2" style="color: #0099ff;">10+</p>
+          <p class="font-inter text-xs opacity-60" style="color: var(--text);">Happy Clients</p>
+         </div><!-- Main Visual -->
+         <div class="relative p-8 rounded-3xl" style="background: var(--surface); border: 1px solid rgba(0,102,204,0.15); box-shadow: 0 20px 25px -5px rgba(0,102,204,0.1);">
+          <div class="aspect-square rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, #0066cc 0%, #0099ff 100%);">
+           <div class="w-full h-full flex items-center justify-center p-8">
+            <svg width="200" height="200" viewbox="0 0 200 200" class="opacity-90"><defs>
+              <lineargradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+               <stop offset="0%" style="stop-color:#fff;stop-opacity:0.9" />
+               <stop offset="100%" style="stop-color:#fff;stop-opacity:0.3" />
+              </lineargradient>
+             </defs> <rect x="30" y="50" width="140" height="90" rx="10" fill="none" stroke="url(#heroGrad)" stroke-width="4" /> <circle cx="100" cy="95" r="25" fill="none" stroke="url(#heroGrad)" stroke-width="4" /> <circle cx="100" cy="95" r="10" fill="url(#heroGrad)" /> <rect x="130" y="60" width="25" height="15" rx="3" fill="url(#heroGrad)" /> <polygon points="92,85 92,105 110,95" fill="url(#heroGrad)" /> <path d="M50 160 L100 160 L150 160" stroke="url(#heroGrad)" stroke-width="2" stroke-dasharray="5,5" /> <circle cx="50" cy="160" r="6" fill="url(#heroGrad)" /> <circle cx="100" cy="160" r="6" fill="url(#heroGrad)" /> <circle cx="150" cy="160" r="6" fill="url(#heroGrad)" />
+            </svg>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- Services Preview -->
+    <section class="py-24 relative">
+     <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-16"><span class="font-inter text-sm tracking-widest uppercase" style="color: var(--primary-action);">What We Do</span>
+       <h2 class="font-syne font-bold text-4xl md:text-5xl mt-4">Services That <span class="gradient-text">Elevate</span></h2>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6"><!-- Service 1 -->
+       <div class="service-card group p-8 rounded-3xl cursor-pointer" style="background: var(--surface); border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 3px rgba(0,0,0,0.05);" onclick="navigateTo('services')">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, var(--primary-action), transparent);">
+         <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7" /> <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+         </svg>
+        </div>
+        <h3 class="font-syne font-bold text-xl mb-3">Reel Shooting</h3>
+        <p class="font-inter text-sm opacity-60 leading-relaxed">Cinematic short-form content that stops the scroll and captures attention.</p>
+       </div><!-- Service 2 -->
+       <div class="service-card group p-8 rounded-3xl cursor-pointer" style="background: var(--surface); border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 3px rgba(0,0,0,0.05);" onclick="navigateTo('services')">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, var(--secondary-action), transparent);">
+         <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /> <path d="M13.73 21a2 2 0 0 1-3.46 0" /> <path d="M12 2v1" />
+         </svg>
+        </div>
+        <h3 class="font-syne font-bold text-xl mb-3">Social Media</h3>
+        <p class="font-inter text-sm opacity-60 leading-relaxed">Strategic management across all platforms to grow your digital presence.</p>
+       </div><!-- Service 3 -->
+       <div class="service-card group p-8 rounded-3xl cursor-pointer" style="background: var(--surface); border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 3px rgba(0,0,0,0.05);" onclick="navigateTo('services')">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #10b981, transparent);">
+         <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /> <circle cx="8.5" cy="8.5" r="1.5" /> <polyline points="21 15 16 10 5 21" />
+         </svg>
+        </div>
+        <h3 class="font-syne font-bold text-xl mb-3">Graphic Design</h3>
+        <p class="font-inter text-sm opacity-60 leading-relaxed">Eye-catching visuals that communicate your brand story beautifully.</p>
+       </div><!-- Service 4 -->
+       <div class="service-card group p-8 rounded-3xl cursor-pointer" style="background: var(--surface); border: 1px solid rgba(0,0,0,0.05); box-shadow: 0 1px 3px rgba(0,0,0,0.05);" onclick="navigateTo('services')">
+        <div class="w-16 h-16 rounded-2xl flex items-center justify-center mb-6 transition-all group-hover:scale-110" style="background: linear-gradient(135deg, #f59e0b, transparent);">
+         <svg width="32" height="32" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /> <path d="M2 17l10 5 10-5" /> <path d="M2 12l10 5 10-5" />
+         </svg>
+        </div>
+        <h3 class="font-syne font-bold text-xl mb-3">Web Development</h3>
+        <p class="font-inter text-sm opacity-60 leading-relaxed">Stunning websites that convert visitors into loyal customers.</p>
+       </div>
+      </div>
+     </div>
+    </section><!-- Marquee Section -->
+    <section class="py-12 overflow-hidden" style="background: linear-gradient(135deg, rgba(0,102,204,0.03), rgba(0,180,216,0.03)); border-top: 1px solid rgba(0,0,0,0.05); border-bottom: 1px solid rgba(0,0,0,0.05);">
+     <div class="flex whitespace-nowrap">
+      <div class="marquee flex items-center gap-12"><span class="font-syne font-bold text-4xl opacity-15">CREATIVITY</span> <span style="color: var(--primary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">INNOVATION</span> <span style="color: var(--secondary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">STRATEGY</span> <span style="color: var(--primary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">RESULTS</span> <span style="color: var(--secondary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">CREATIVITY</span> <span style="color: var(--primary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">INNOVATION</span> <span style="color: var(--secondary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">STRATEGY</span> <span style="color: var(--primary-action);">✦</span> <span class="font-syne font-bold text-4xl opacity-15">RESULTS</span> <span style="color: var(--secondary-action);">✦</span>
+      </div>
+     </div>
+    </section><!-- Why Choose Us -->
+    <section class="py-24">
+     <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+       <div><span class="font-inter text-sm tracking-widest uppercase" style="color: var(--primary-action);">Why Choose Us</span>
+        <h2 class="font-syne font-bold text-4xl md:text-5xl mt-4 mb-8">Fresh Ideas, <span class="gradient-text">Bold Execution</span></h2>
+        <p class="font-inter text-lg opacity-70 mb-8 leading-relaxed">As a newly established agency, we bring unbridled enthusiasm and cutting-edge approaches to every project. No outdated playbooks here – just innovative strategies tailored for today's digital landscape.</p>
+        <div class="space-y-6">
+         <div class="flex gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,102,204,0.1);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="var(--primary-action)" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /> <polyline points="22 4 12 14.01 9 11.01" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-syne font-bold text-lg mb-1">Modern Approach</h4>
+           <p class="font-inter text-sm opacity-60">We use the latest tools and trends to keep your brand ahead.</p>
+          </div>
+         </div>
+         <div class="flex gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(0,180,216,0.1);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="var(--secondary-action)" stroke-width="2"><circle cx="12" cy="12" r="10" /> <path d="M12 6v6l4 2" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-syne font-bold text-lg mb-1">Quick Turnaround</h4>
+           <p class="font-inter text-sm opacity-60">Fast delivery without compromising on quality.</p>
+          </div>
+         </div>
+         <div class="flex gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(16,185,129,0.1);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-syne font-bold text-lg mb-1">Passionate Team</h4>
+           <p class="font-inter text-sm opacity-60">We genuinely care about your success and growth.</p>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="relative">
+        <div class="grid grid-cols-2 gap-4">
+         <div class="space-y-4">
+          <div class="p-8 rounded-3xl" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action));">
+           <p class="stat-number font-syne font-bold text-5xl text-white">50+</p>
+           <p class="font-inter text-sm text-white/80 mt-2">Projects Delivered</p>
+          </div>
+          <div class="p-8 rounded-3xl" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+           <p class="stat-number font-syne font-bold text-5xl" style="color: var(--primary-action);">98%</p>
+           <p class="font-inter text-sm opacity-60 mt-2">Client Satisfaction</p>
+          </div>
+         </div>
+         <div class="space-y-4 mt-8">
+          <div class="p-8 rounded-3xl" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+           <p class="stat-number font-syne font-bold text-5xl" style="color: var(--secondary-action);">24/7</p>
+           <p class="font-inter text-sm opacity-60 mt-2">Support Available</p>
+          </div>
+          <div class="p-8 rounded-3xl" style="background: linear-gradient(135deg, #10b981, #059669);">
+           <p class="stat-number font-syne font-bold text-5xl text-white">100%</p>
+           <p class="font-inter text-sm text-white/80 mt-2">Dedication</p>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section><!-- CTA Section -->
+    <section class="py-24">
+     <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="p-12 md:p-16 rounded-[40px] relative overflow-hidden" style="background: linear-gradient(135deg, var(--primary-action) 0%, var(--secondary-action) 100%);">
+       <div class="absolute inset-0 opacity-30">
+        <div class="absolute top-0 right-0 w-64 h-64 rounded-full" style="background: white; filter: blur(80px);"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 rounded-full" style="background: white; filter: blur(80px);"></div>
+       </div>
+       <div class="relative">
+        <h2 class="font-syne font-bold text-3xl md:text-5xl text-white mb-6">Ready to Transform Your Brand?</h2>
+        <p class="font-inter text-lg text-white/80 mb-10 max-w-xl mx-auto">Let's create something extraordinary together. Your vision, our expertise.</p><a href="#" onclick="navigateTo('contact'); return false;" class="inline-flex items-center gap-3 px-10 py-5 rounded-full font-inter font-semibold transition-all hover:scale-105" style="background: white; color: var(--primary-action);"> <span>Start Your Project</span>
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- SERVICES PAGE -->
+   <div id="page-services" class="page">
+    <section class="pt-32 pb-24">
+     <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20"><span class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(0,102,204,0.1); border: 1px solid rgba(0,102,204,0.3);"> <span class="font-inter text-sm" style="color: var(--primary-action);">Our Expertise</span> </span>
+       <h1 class="font-syne font-bold text-5xl md:text-6xl mb-6">Services That <span class="gradient-text">Drive Results</span></h1>
+       <p class="font-inter text-lg opacity-70 max-w-2xl mx-auto">Comprehensive digital marketing solutions tailored to elevate your brand and accelerate your growth.</p>
+      </div><!-- Service Cards Detailed -->
+      <div class="space-y-8"><!-- Reel Shooting -->
+       <div class="group p-8 md:p-12 rounded-[32px] transition-all hover:scale-[1.02]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+         <div>
+          <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action));">
+           <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7" /> <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+           </svg>
+          </div>
+          <h3 class="font-syne font-bold text-3xl mb-4">Reel Shooting &amp; Production</h3>
+          <p class="font-inter opacity-70 mb-6 leading-relaxed">Create scroll-stopping short-form video content that captivates your audience. Our creative team handles everything from concept to final cut.</p>
+          <ul class="space-y-3">
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--primary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Concept Development &amp; Scripting</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--primary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Professional Shooting &amp; Lighting</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--primary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Post-Production &amp; Editing</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--primary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Platform Optimization</span></li>
+          </ul>
+         </div>
+         <div class="relative">
+          <div class="aspect-video rounded-2xl overflow-hidden" style="background: linear-gradient(135deg, rgba(255,107,53,0.2), rgba(124,58,237,0.2));">
+           <div class="w-full h-full flex items-center justify-center">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center cursor-pointer transition-all hover:scale-110" style="background: var(--primary-action);">
+             <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><polygon points="5 3 19 12 5 21 5 3" />
+             </svg>
+            </div>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Social Media Management -->
+       <div class="group p-8 md:p-12 rounded-[32px] transition-all hover:scale-[1.02]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+         <div class="order-2 md:order-1">
+          <div class="grid grid-cols-3 gap-4">
+           <div class="aspect-square rounded-2xl flex items-center justify-center" style="background: linear-gradient(135deg, #E1306C, #833AB4);">
+            <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2" /> <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="2" /> <circle cx="18" cy="6" r="1.5" fill="white" />
+            </svg>
+           </div>
+           <div class="aspect-square rounded-2xl flex items-center justify-center" style="background: #1877F2;">
+            <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+            </svg>
+           </div>
+           <div class="aspect-square rounded-2xl flex items-center justify-center" style="background: #000;">
+            <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+            </svg>
+           </div>
+           <div class="aspect-square rounded-2xl flex items-center justify-center" style="background: #0A66C2;">
+            <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /> <rect x="2" y="9" width="4" height="12" /> <circle cx="4" cy="4" r="2" />
+            </svg>
+           </div>
+           <div class="aspect-square rounded-2xl flex items-center justify-center" style="background: #1DA1F2;">
+            <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z" />
+            </svg>
+           </div>
+           <div class="aspect-square rounded-2xl flex items-center justify-center" style="background: #FF0000;">
+            <svg width="32" height="32" viewbox="0 0 24 24" fill="white"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" /> <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="#FF0000" stroke="white" stroke-width="1" />
+            </svg>
+           </div>
+          </div>
+         </div>
+         <div class="order-1 md:order-2">
+          <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--secondary-action), var(--primary-action));">
+           <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" /> <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+           </svg>
+          </div>
+          <h3 class="font-syne font-bold text-3xl mb-4">Social Media Management</h3>
+          <p class="font-inter opacity-70 mb-6 leading-relaxed">Complete social media management to build your community, engage your audience, and grow your online presence across all major platforms.</p>
+          <ul class="space-y-3">
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--secondary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Content Strategy &amp; Planning</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--secondary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Daily Posting &amp; Scheduling</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--secondary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Community Engagement</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="var(--secondary-action)" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Analytics &amp; Reporting</span></li>
+          </ul>
+         </div>
+        </div>
+       </div><!-- Graphic Design -->
+       <div class="group p-8 md:p-12 rounded-[32px] transition-all hover:scale-[1.02]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+         <div>
+          <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #10b981, #059669);">
+           <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2" /> <circle cx="8.5" cy="8.5" r="1.5" /> <polyline points="21 15 16 10 5 21" />
+           </svg>
+          </div>
+          <h3 class="font-syne font-bold text-3xl mb-4">Graphical Posting &amp; Design</h3>
+          <p class="font-inter opacity-70 mb-6 leading-relaxed">Eye-catching visual content that tells your brand story and creates a consistent, memorable presence across all digital touchpoints.</p>
+          <ul class="space-y-3">
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Social Media Graphics</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Brand Identity Design</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Marketing Materials</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Infographics &amp; Presentations</span></li>
+          </ul>
+         </div>
+         <div class="relative">
+          <div class="grid grid-cols-2 gap-4">
+           <div class="aspect-square rounded-2xl" style="background: linear-gradient(135deg, #ff6b35 0%, #ff8c5a 100%);"></div>
+           <div class="aspect-square rounded-2xl" style="background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);"></div>
+           <div class="aspect-square rounded-2xl" style="background: linear-gradient(135deg, #10b981 0%, #34d399 100%);"></div>
+           <div class="aspect-square rounded-2xl" style="background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);"></div>
+          </div>
+         </div>
+        </div>
+       </div><!-- Website Development -->
+       <div class="group p-8 md:p-12 rounded-[32px] transition-all hover:scale-[1.02]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+        <div class="grid md:grid-cols-2 gap-8 items-center">
+         <div class="order-2 md:order-1">
+          <div class="aspect-video rounded-2xl p-4" style="background: #1a1a2e;">
+           <div class="flex gap-2 mb-4">
+            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+           </div>
+           <div class="space-y-2">
+            <div class="h-4 rounded w-3/4" style="background: rgba(255,107,53,0.3);"></div>
+            <div class="h-3 rounded w-1/2" style="background: rgba(255,255,255,0.1);"></div>
+            <div class="h-3 rounded w-2/3" style="background: rgba(255,255,255,0.1);"></div>
+            <div class="flex gap-2 mt-4">
+             <div class="h-8 w-24 rounded" style="background: var(--primary-action);"></div>
+             <div class="h-8 w-24 rounded" style="background: rgba(255,255,255,0.1);"></div>
+            </div>
+           </div>
+          </div>
+         </div>
+         <div class="order-1 md:order-2">
+          <div class="w-20 h-20 rounded-2xl flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #f59e0b, #d97706);">
+           <svg width="40" height="40" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z" /> <path d="M2 17l10 5 10-5" /> <path d="M2 12l10 5 10-5" />
+           </svg>
+          </div>
+          <h3 class="font-syne font-bold text-3xl mb-4">Website Development</h3>
+          <p class="font-inter opacity-70 mb-6 leading-relaxed">Beautiful, responsive websites that convert visitors into customers. From landing pages to full e-commerce solutions.</p>
+          <ul class="space-y-3">
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Custom Web Design</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>Mobile-First Development</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>SEO Optimization</span></li>
+           <li class="flex items-center gap-3 font-inter text-sm">
+            <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2">
+             <polyline points="20 6 9 17 4 12" />
+            </svg><span>E-commerce Solutions</span></li>
+          </ul>
+         </div>
+        </div>
+       </div>
+      </div><!-- Pricing CTA -->
+      <div class="mt-20 text-center">
+       <div class="inline-block p-12 rounded-[40px]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+        <h3 class="font-syne font-bold text-3xl mb-4">Custom Packages Available</h3>
+        <p class="font-inter opacity-70 mb-8 max-w-md">Every business is unique. Let's discuss a tailored package that fits your needs and budget.</p><a href="#" onclick="navigateTo('contact'); return false;" class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter font-semibold transition-all hover:scale-105" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action)); color: white;"> <span>Get a Quote</span>
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- ABOUT PAGE -->
+   <div id="page-about" class="page">
+    <section class="pt-32 pb-24">
+     <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20"><span class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3);"> <span class="font-inter text-sm" style="color: var(--primary-action);">Our Story</span> </span>
+       <h1 class="font-syne font-bold text-5xl md:text-6xl mb-6">About <span class="gradient-text">THE VISION</span></h1>
+       <p id="company-tagline" class="font-inter text-lg opacity-70 max-w-2xl mx-auto">Born from passion, driven by creativity, focused on your success.</p>
+      </div><!-- Story Section -->
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-24">
+       <div class="relative">
+        <div class="aspect-square rounded-[40px] overflow-hidden" style="background: linear-gradient(135deg, var(--primary-action) 0%, var(--secondary-action) 100%);">
+         <div class="w-full h-full flex items-center justify-center p-12">
+          <svg width="200" height="200" viewbox="0 0 200 200" class="opacity-90"><defs>
+            <lineargradient id="aboutGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+             <stop offset="0%" style="stop-color:#fff;stop-opacity:0.9" />
+             <stop offset="100%" style="stop-color:#fff;stop-opacity:0.3" />
+            </lineargradient>
+           </defs> <!-- Abstract Vision Symbol --> <circle cx="100" cy="100" r="70" fill="none" stroke="url(#aboutGrad)" stroke-width="3" /> <circle cx="100" cy="100" r="50" fill="none" stroke="url(#aboutGrad)" stroke-width="2" /> <circle cx="100" cy="100" r="25" fill="url(#aboutGrad)" /> <!-- Eye/Vision Lines --> <path d="M30 100 Q100 40 170 100 Q100 160 30 100" fill="none" stroke="url(#aboutGrad)" stroke-width="3" /> <!-- Sparkles --> <circle cx="60" cy="60" r="4" fill="url(#aboutGrad)" /> <circle cx="140" cy="60" r="4" fill="url(#aboutGrad)" /> <circle cx="60" cy="140" r="4" fill="url(#aboutGrad)" /> <circle cx="140" cy="140" r="4" fill="url(#aboutGrad)" />
+          </svg>
+         </div>
+        </div>
+        <div class="absolute -bottom-8 -right-8 p-6 rounded-2xl backdrop-blur-xl floating" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">
+         <p class="font-syne font-bold text-3xl" style="color: var(--primary-action);">2024</p>
+         <p class="font-inter text-sm opacity-60">Founded</p>
+        </div>
+       </div>
+       <div>
+        <h2 class="font-syne font-bold text-4xl mb-6">The Beginning of <span class="gradient-text">Something Great</span></h2>
+        <div class="space-y-6 font-inter opacity-80 leading-relaxed">
+         <p>THE VISION was born from a simple belief: every brand deserves to be seen, heard, and remembered in the digital world. We started with a dream and a laptop, and we're building something extraordinary.</p>
+         <p>As a newly established digital marketing agency, we bring fresh perspectives, unbounded creativity, and an unwavering commitment to our clients' success. We're not just another agency – we're your growth partners.</p>
+         <p>Our approach combines cutting-edge strategies with authentic storytelling. We don't believe in cookie-cutter solutions. Every campaign, every piece of content, every strategy is crafted specifically for your unique brand and goals.</p>
+        </div>
+       </div>
+      </div><!-- Values Section -->
+      <div class="mb-24">
+       <div class="text-center mb-16">
+        <h2 class="font-syne font-bold text-4xl">Our <span class="gradient-text">Core Values</span></h2>
+       </div>
+       <div class="grid md:grid-cols-3 gap-8">
+        <div class="text-center p-8 rounded-3xl" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <div class="w-20 h-20 rounded-full mx-auto flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--primary-action), transparent);">
+          <svg width="36" height="36" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+          </svg>
+         </div>
+         <h3 class="font-syne font-bold text-2xl mb-4">Excellence</h3>
+         <p class="font-inter text-sm opacity-70 leading-relaxed">We strive for excellence in every pixel, every word, and every strategy we create.</p>
+        </div>
+        <div class="text-center p-8 rounded-3xl" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <div class="w-20 h-20 rounded-full mx-auto flex items-center justify-center mb-6" style="background: linear-gradient(135deg, var(--secondary-action), transparent);">
+          <svg width="36" height="36" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+         </div>
+         <h3 class="font-syne font-bold text-2xl mb-4">Innovation</h3>
+         <p class="font-inter text-sm opacity-70 leading-relaxed">Fresh ideas and cutting-edge approaches that keep your brand ahead of the curve.</p>
+        </div>
+        <div class="text-center p-8 rounded-3xl" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <div class="w-20 h-20 rounded-full mx-auto flex items-center justify-center mb-6" style="background: linear-gradient(135deg, #10b981, transparent);">
+          <svg width="36" height="36" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /> <path d="M9 12l2 2 4-4" />
+          </svg>
+         </div>
+         <h3 class="font-syne font-bold text-2xl mb-4">Integrity</h3>
+         <p class="font-inter text-sm opacity-70 leading-relaxed">Honest communication, transparent processes, and genuine partnerships.</p>
+        </div>
+       </div>
+      </div><!-- Timeline -->
+      <div class="mb-24">
+       <div class="text-center mb-16">
+        <h2 class="font-syne font-bold text-4xl">Our <span class="gradient-text">Journey</span></h2>
+       </div>
+       <div class="relative">
+        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5" style="background: linear-gradient(to bottom, var(--primary-action), var(--secondary-action));"></div>
+        <div class="space-y-12">
+         <div class="timeline-item relative flex items-center">
+          <div class="w-1/2 pr-12 text-right">
+           <div class="p-6 rounded-2xl inline-block" style="background: var(--surface);"><span class="font-syne font-bold text-lg" style="color: var(--primary-action);">Q1 2024</span>
+            <h4 class="font-syne font-bold text-xl mt-2">The Vision is Born</h4>
+            <p class="font-inter text-sm opacity-70 mt-2">Founded with a mission to transform digital marketing for emerging brands.</p>
+           </div>
+          </div>
+          <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full" style="background: var(--primary-action);"></div>
+          <div class="w-1/2 pl-12"></div>
+         </div>
+         <div class="timeline-item relative flex items-center">
+          <div class="w-1/2 pr-12"></div>
+          <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full" style="background: var(--secondary-action);"></div>
+          <div class="w-1/2 pl-12">
+           <div class="p-6 rounded-2xl inline-block" style="background: var(--surface);"><span class="font-syne font-bold text-lg" style="color: var(--secondary-action);">Q2 2024</span>
+            <h4 class="font-syne font-bold text-xl mt-2">First Major Projects</h4>
+            <p class="font-inter text-sm opacity-70 mt-2">Launched successful campaigns for our first clients with outstanding results.</p>
+           </div>
+          </div>
+         </div>
+         <div class="timeline-item relative flex items-center">
+          <div class="w-1/2 pr-12 text-right">
+           <div class="p-6 rounded-2xl inline-block" style="background: var(--surface);"><span class="font-syne font-bold text-lg" style="color: #10b981;">Q3 2024</span>
+            <h4 class="font-syne font-bold text-xl mt-2">Team Expansion</h4>
+            <p class="font-inter text-sm opacity-70 mt-2">Growing our creative team to serve more clients and take on bigger challenges.</p>
+           </div>
+          </div>
+          <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full" style="background: #10b981;"></div>
+          <div class="w-1/2 pl-12"></div>
+         </div>
+         <div class="timeline-item relative flex items-center">
+          <div class="w-1/2 pr-12"></div>
+          <div class="timeline-dot absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full" style="background: #f59e0b;"></div>
+          <div class="w-1/2 pl-12">
+           <div class="p-6 rounded-2xl inline-block" style="background: var(--surface);"><span class="font-syne font-bold text-lg" style="color: #f59e0b;">Now &amp; Beyond</span>
+            <h4 class="font-syne font-bold text-xl mt-2">Building the Future</h4>
+            <p class="font-inter text-sm opacity-70 mt-2">Continuously evolving, learning, and delivering exceptional results for our partners.</p>
+           </div>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div><!-- CTA -->
+      <div class="text-center">
+       <div class="inline-block p-12 rounded-[40px]" style="background: linear-gradient(135deg, var(--primary-action) 0%, var(--secondary-action) 100%);">
+        <h3 class="font-syne font-bold text-3xl text-white mb-4">Be Part of Our Story</h3>
+        <p class="font-inter text-white/80 mb-8 max-w-md">Join the growing list of brands that trust THE VISION for their digital success.</p><a href="#" onclick="navigateTo('contact'); return false;" class="inline-flex items-center gap-3 px-8 py-4 rounded-full font-inter font-semibold transition-all hover:scale-105" style="background: white; color: var(--primary-action);"> <span>Work With Us</span>
+         <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7" />
+         </svg></a>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- CONTACT PAGE -->
+   <div id="page-contact" class="page">
+    <section class="pt-32 pb-24">
+     <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20"><span class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6" style="background: rgba(255,107,53,0.1); border: 1px solid rgba(255,107,53,0.3);"> <span class="font-inter text-sm" style="color: var(--primary-action);">Get In Touch</span> </span>
+       <h1 class="font-syne font-bold text-5xl md:text-6xl mb-6">Let's Create <span class="gradient-text">Together</span></h1>
+       <p class="font-inter text-lg opacity-70 max-w-2xl mx-auto">Ready to transform your digital presence? We'd love to hear about your project.</p>
+      </div>
+      <div class="grid lg:grid-cols-2 gap-16"><!-- Contact Form -->
+       <div class="p-8 md:p-12 rounded-[32px]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+        <h2 class="font-syne font-bold text-2xl mb-8">Send Us a Message</h2>
+        <form id="contactForm" class="space-y-6">
+         <div class="grid md:grid-cols-2 gap-6">
+          <div><label for="name" class="block font-inter text-sm mb-2 opacity-70">Your Name</label> <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-xl font-inter text-white placeholder-white/30 focus:outline-none focus:ring-2 transition-all" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); --tw-ring-color: var(--primary-action);" placeholder="John Doe">
+          </div>
+          <div><label for="email" class="block font-inter text-sm mb-2 opacity-70">Email Address</label> <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-xl font-inter text-white placeholder-white/30 focus:outline-none focus:ring-2 transition-all" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); --tw-ring-color: var(--primary-action);" placeholder="john@example.com">
+          </div>
+         </div>
+         <div><label for="phone" class="block font-inter text-sm mb-2 opacity-70">Phone Number</label> <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-xl font-inter text-white placeholder-white/30 focus:outline-none focus:ring-2 transition-all" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); --tw-ring-color: var(--primary-action);" placeholder="+91 98765 43210">
+         </div>
+         <div><label for="service" class="block font-inter text-sm mb-2 opacity-70">Service Interested In</label> <select id="service" name="service" class="w-full px-4 py-3 rounded-xl font-inter text-white focus:outline-none focus:ring-2 transition-all" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); --tw-ring-color: var(--primary-action);"> <option value="" style="background: #16161f;">Select a service</option> <option value="reel" style="background: #16161f;">Reel Shooting</option> <option value="social" style="background: #16161f;">Social Media Management</option> <option value="graphic" style="background: #16161f;">Graphic Design</option> <option value="web" style="background: #16161f;">Website Development</option> <option value="all" style="background: #16161f;">Complete Package</option> </select>
+         </div>
+         <div><label for="message" class="block font-inter text-sm mb-2 opacity-70">Your Message</label> <textarea id="message" name="message" rows="4" required class="w-full px-4 py-3 rounded-xl font-inter text-white placeholder-white/30 focus:outline-none focus:ring-2 transition-all resize-none" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); --tw-ring-color: var(--primary-action);" placeholder="Tell us about your project..."></textarea>
+         </div><button type="submit" class="w-full flex items-center justify-center gap-3 px-8 py-4 rounded-xl font-inter font-semibold transition-all hover:scale-[1.02]" style="background: linear-gradient(135deg, var(--primary-action), var(--secondary-action)); color: white;"> <span>Send Message</span>
+          <svg width="20" height="20" viewbox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+          </svg></button>
+        </form>
+        <div id="formSuccess" class="hidden mt-6 p-4 rounded-xl text-center" style="background: rgba(16,185,129,0.1); border: 1px solid rgba(16,185,129,0.3);">
+         <p class="font-inter" style="color: #10b981;">🎉 Thank you! We'll get back to you soon.</p>
+        </div>
+       </div><!-- Contact Info -->
+       <div class="space-y-8">
+        <div class="p-8 rounded-[24px]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--primary-action), transparent);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" /> <polyline points="22,6 12,13 2,6" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-syne font-bold text-lg mb-1">Email Us</h4>
+           <p class="font-inter opacity-70">hello@thevision.agency</p>
+           <p class="font-inter opacity-70">support@thevision.agency</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-8 rounded-[24px]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, var(--secondary-action), transparent);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-syne font-bold text-lg mb-1">Call Us</h4>
+           <p class="font-inter opacity-70">+91 98765 43210</p>
+           <p class="font-inter opacity-70">Mon - Sat, 10am - 7pm</p>
+          </div>
+         </div>
+        </div>
+        <div class="p-8 rounded-[24px]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style="background: linear-gradient(135deg, #10b981, transparent);">
+           <svg width="24" height="24" viewbox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /> <circle cx="12" cy="10" r="3" />
+           </svg>
+          </div>
+          <div>
+           <h4 class="font-syne font-bold text-lg mb-1">Location</h4>
+           <p class="font-inter opacity-70">India</p>
+           <p class="font-inter opacity-70">Working Remotely, Serving Globally</p>
+          </div>
+         </div>
+        </div><!-- Social Links -->
+        <div class="p-8 rounded-[24px]" style="background: var(--surface); border: 1px solid rgba(255,255,255,0.05);">
+         <h4 class="font-syne font-bold text-lg mb-4">Follow Us</h4>
+         <div class="flex gap-4"><a href="#" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all hover:scale-110" style="background: linear-gradient(135deg, #E1306C, #833AB4);">
+           <svg width="20" height="20" viewbox="0 0 24 24" fill="white"><rect x="2" y="2" width="20" height="20" rx="5" ry="5" fill="none" stroke="white" stroke-width="2" /> <circle cx="12" cy="12" r="4" fill="none" stroke="white" stroke-width="2" /> <circle cx="18" cy="6" r="1.5" fill="white" />
+           </svg></a> <a href="#" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all hover:scale-110" style="background: #1877F2;">
+           <svg width="20" height="20" viewbox="0 0 24 24" fill="white"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+           </svg></a> <a href="#" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all hover:scale-110" style="background: #0A66C2;">
+           <svg width="20" height="20" viewbox="0 0 24 24" fill="white"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" /> <rect x="2" y="9" width="4" height="12" /> <circle cx="4" cy="4" r="2" />
+           </svg></a> <a href="#" class="w-12 h-12 rounded-xl flex items-center justify-center transition-all hover:scale-110" style="background: #000;">
+           <svg width="20" height="20" viewbox="0 0 24 24" fill="white"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+           </svg></a>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </section>
+   </div><!-- Footer -->
+   <footer class="py-12" style="background: var(--surface); border-top: 1px solid rgba(255,255,255,0.05);">
+    <div class="max-w-7xl mx-auto px-6">
+     <div class="grid md:grid-cols-4 gap-12 mb-12">
+      <div class="md:col-span-2"><a href="#" class="flex items-center gap-3 mb-6" onclick="navigateTo('home'); return false;">
+        <svg width="40" height="40" viewbox="0 0 48 48"><defs>
+          <lineargradient id="footerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+           <stop offset="0%" style="stop-color:#ff6b35" />
+           <stop offset="100%" style="stop-color:#7c3aed" />
+          </lineargradient>
+         </defs> <circle cx="24" cy="24" r="22" fill="none" stroke="url(#footerLogoGrad)" stroke-width="2" /> <path d="M24 12 L24 24 L36 24" stroke="url(#footerLogoGrad)" stroke-width="3" stroke-linecap="round" fill="none" /> <circle cx="24" cy="24" r="4" fill="url(#footerLogoGrad)" />
+        </svg>
+        <div><span class="font-syne font-bold text-lg" style="color: var(--text);">THE VISION</span> <span class="block text-xs font-inter tracking-widest opacity-60">DIGITAL AGENCY</span>
+        </div></a>
+       <p class="font-inter opacity-60 text-sm max-w-sm leading-relaxed">Transforming brands with creative digital marketing solutions. Your vision, our expertise.</p>
+      </div>
+      <div>
+       <h4 class="font-syne font-bold mb-4">Quick Links</h4>
+       <ul class="space-y-3 font-inter text-sm opacity-70">
+        <li><a href="#" onclick="navigateTo('home'); return false;" class="hover:opacity-100 transition-opacity">Home</a></li>
+        <li><a href="#" onclick="navigateTo('services'); return false;" class="hover:opacity-100 transition-opacity">Services</a></li>
+        <li><a href="#" onclick="navigateTo('about'); return false;" class="hover:opacity-100 transition-opacity">About Us</a></li>
+        <li><a href="#" onclick="navigateTo('contact'); return false;" class="hover:opacity-100 transition-opacity">Contact</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-syne font-bold mb-4">Services</h4>
+       <ul class="space-y-3 font-inter text-sm opacity-70">
+        <li><a href="#" onclick="navigateTo('services'); return false;" class="hover:opacity-100 transition-opacity">Reel Shooting</a></li>
+        <li><a href="#" onclick="navigateTo('services'); return false;" class="hover:opacity-100 transition-opacity">Social Media</a></li>
+        <li><a href="#" onclick="navigateTo('services'); return false;" class="hover:opacity-100 transition-opacity">Graphic Design</a></li>
+        <li><a href="#" onclick="navigateTo('services'); return false;" class="hover:opacity-100 transition-opacity">Web Development</a></li>
+       </ul>
+      </div>
+     </div>
+     <div class="pt-8 flex flex-col md:flex-row justify-between items-center gap-4" style="border-top: 1px solid rgba(255,255,255,0.05);">
+      <p class="font-inter text-sm opacity-60">© 2024 THE VISION Digital Marketing Agency. All rights reserved.</p>
+      <p class="font-inter text-sm opacity-60">Made with ❤️ in India</p>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // Default configuration
+    const defaultConfig = {
+      hero_headline: 'We Turn Digital Dreams Into Reality',
+      hero_subtext: 'A fresh perspective on digital marketing. We craft compelling stories, stunning visuals, and strategies that make your brand unforgettable.',
+      company_tagline: 'Born from passion, driven by creativity, focused on your success.',
+      background_color: '#f0f7ff',
+      surface_color: '#ffffff',
+      text_color: '#0d3b66',
+      primary_action: '#0066cc',
+      secondary_action: '#0099ff',
+      font_family: 'Syne',
+      font_size: 16
+    };
+
+    let config = { ...defaultConfig };
+
+    // Navigation function
+    function navigateTo(pageName) {
+      // Hide all pages
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+      
+      // Show selected page
+      const targetPage = document.getElementById('page-' + pageName);
+      if (targetPage) {
+        targetPage.classList.add('active');
+      }
+      
+      // Update nav links
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.dataset.page === pageName) {
+          link.classList.add('active');
+        }
+      });
+      
+      // Scroll to top
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    // Mobile menu toggle
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+    }
+
+    // Contact form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('formSuccess').classList.remove('hidden');
+      this.reset();
+      setTimeout(() => {
+        document.getElementById('formSuccess').classList.add('hidden');
+      }, 5000);
+    });
+
+    // Element SDK Integration
+    async function onConfigChange(cfg) {
+      config = { ...defaultConfig, ...cfg };
+      
+      // Update CSS variables
+      const wrapper = document.getElementById('app-wrapper');
+      wrapper.style.setProperty('--background', config.background_color);
+      wrapper.style.setProperty('--surface', config.surface_color);
+      wrapper.style.setProperty('--text', config.text_color);
+      wrapper.style.setProperty('--primary-action', config.primary_action);
+      wrapper.style.setProperty('--secondary-action', config.secondary_action);
+      
+      // Update text content
+      document.getElementById('hero-headline').innerHTML = config.hero_headline.replace('Digital Dreams', '<span class="gradient-text">Digital Dreams</span>');
+      document.getElementById('hero-subtext').textContent = config.hero_subtext;
+      document.getElementById('company-tagline').textContent = config.company_tagline;
+      
+      // Update fonts
+      const fontFamily = config.font_family || defaultConfig.font_family;
+      document.querySelectorAll('.font-syne').forEach(el => {
+        el.style.fontFamily = `${fontFamily}, sans-serif`;
+      });
+      
+      // Update font sizes proportionally
+      const baseSize = config.font_size || defaultConfig.font_size;
+      document.documentElement.style.fontSize = `${baseSize}px`;
+    }
+
+    // Initialize SDK
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange,
+        mapToCapabilities: (cfg) => ({
+          recolorables: [
+            {
+              get: () => cfg.background_color || defaultConfig.background_color,
+              set: (v) => { cfg.background_color = v; window.elementSdk.setConfig({ background_color: v }); }
+            },
+            {
+              get: () => cfg.surface_color || defaultConfig.surface_color,
+              set: (v) => { cfg.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); }
+            },
+            {
+              get: () => cfg.text_color || defaultConfig.text_color,
+              set: (v) => { cfg.text_color = v; window.elementSdk.setConfig({ text_color: v }); }
+            },
+            {
+              get: () => cfg.primary_action || defaultConfig.primary_action,
+              set: (v) => { cfg.primary_action = v; window.elementSdk.setConfig({ primary_action: v }); }
+            },
+            {
+              get: () => cfg.secondary_action || defaultConfig.secondary_action,
+              set: (v) => { cfg.secondary_action = v; window.elementSdk.setConfig({ secondary_action: v }); }
+            }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => cfg.font_family || defaultConfig.font_family,
+            set: (v) => { cfg.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => cfg.font_size || defaultConfig.font_size,
+            set: (v) => { cfg.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        }),
+        mapToEditPanelValues: (cfg) => new Map([
+          ['hero_headline', cfg.hero_headline || defaultConfig.hero_headline],
+          ['hero_subtext', cfg.hero_subtext || defaultConfig.hero_subtext],
+          ['company_tagline', cfg.company_tagline || defaultConfig.company_tagline]
+        ])
+      });
+    }
+  </script>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9d4a9c7f03654732',t:'MTc3MjIyNjAyMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
